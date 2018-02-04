@@ -7,7 +7,7 @@ var upload = multer({ dest: 'uploads/' })
 
 function find(req,res,next){
 
-	Place.findById(req.params.id)
+	Place.findOne({slug:req.params.slug})
 
 		.then((doc)=>{
 
@@ -106,22 +106,37 @@ function update(req,res){
     if (req.body.openHour) {placeData["openHour"] = req.body.openHour }
     if (req.body.closeHour) {placeData["closeHour"] = req.body.closeHour }
     
-    Place.findByIdAndUpdate(req.params.id,placeData,{new:true})
+    Place.findOne({slug:req.params.slug})
 
-      .then((updatedDoc) => res.json(updatedDoc))
+      .then((place) => {
+
+			  place.set(placeData);
+			  
+			  place.save((err, updatedDoc) => {
+			    
+			    if (err){
+
+			    	console.log(err)
+			    	res.json(err)
+
+			    } 
+			    res.json(updatedDoc)
+			  });
+
+		})
       
-      .catch((err)=>{
+        .catch((err)=>{
 
 			console.log(err)
 			res.json(err)
-	  })
+	    })
 }
 
 function destroy(req,res){
 
 	//Eliminar un recurso
 
-	Place.findByIdAndRemove(req.params.id)
+	Place.findOneAndRemove({slug:req.params.slug})
 
         .then(() => res.json({message: "El elemento se ha eliminado correctamente"}))
         .catch((err)=>{

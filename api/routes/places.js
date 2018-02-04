@@ -16,7 +16,7 @@ router.route('/')
 
 
 
-router.route('/:id')
+router.route('/:slug')
 
 	.get(placesController.find,placesController.show)
 
