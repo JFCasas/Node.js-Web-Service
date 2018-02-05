@@ -1,4 +1,4 @@
-# **Proyecto PARA REALIZAR SERVICIO WEB MEDIANTE Node.js y Express**
+# **PROYECTO PARA REALIZAR SERVICIO WEB MEDIANTE Node.js y Express**
 
 El esqueleto del proyecto lo generamos con express-generator
 
@@ -52,6 +52,13 @@ Multer cuando subimos los archivos nos genera un req.files de la siguiente maner
 }
 
 ...
+
+Some basic Git commands are:
+```
+git status
+git add
+git commit
+```
 
 
 
