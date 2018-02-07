@@ -7,6 +7,8 @@ let User = require('../models/User');
 
 let usersController = require('../controllers/UsersController');
 
+let sessionsController = require('../controllers/SessionsController');
+
 //let prueba = require('../middlewares/prueba')
 
 
@@ -14,6 +16,9 @@ router.route('/')
 
 	.get(usersController.index)
 
-	.post(usersController.create)
+	.post(
+		usersController.create,
+		sessionsController.generateToken,
+		sessionsController.sendToken)
 
 module.exports = router;

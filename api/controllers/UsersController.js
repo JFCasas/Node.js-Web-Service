@@ -18,7 +18,7 @@ function index(req,res){
 		})
 }
 
-function create(req,res){
+function create(req,res,next){
 
 	console.log(req.body.admin)
 
@@ -30,9 +30,13 @@ function create(req,res){
 		admin:req.body.admin
 
 
-	}).then((doc)=>{
+	}).then((user)=>{
 
-		res.json(doc)
+		req.user = user
+
+		next()
+
+		//res.json(doc)
 
 
 	}).catch((err)=>{
