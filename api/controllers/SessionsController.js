@@ -2,6 +2,39 @@ const jwt = require('jsonwebtoken')
 
 const jwtSecret = 'dfhwgfreufewefeiyPosteriormenteehrhg'
 
+const User = require('../models/User')
+
+function authenticate(req,res,next){
+
+	User.findOne({email:req.body.email})
+
+		.then((user)=>{
+
+			user.verifyPassword(req.body.password)
+
+				.then((valid)=>{
+
+					if(valid){
+
+						req.user = user
+						next()
+					
+					}else{
+
+						next(new Error('Invalid credentials'))
+					}
+
+
+				})
+
+		}).catch((error)=>{
+
+			next(error)
+		})
+
+
+}
+
 
 function generateToken(req,res,next){
 
@@ -36,5 +69,6 @@ function sendToken(req,res){
 module.exports = {
 
 	generateToken,
-	sendToken
+	sendToken,
+	authenticate
 }

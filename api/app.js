@@ -11,7 +11,7 @@ var db = require("./config/database");
 
 var places = require('./routes/places'); 
 var users = require('./routes/users');
-
+var sessions = require('./routes/sessions');
 
 db.connect();
 var app = express();
@@ -31,6 +31,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/places', places);
 app.use('/users', users);
+app.use('/sessions', sessions);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
