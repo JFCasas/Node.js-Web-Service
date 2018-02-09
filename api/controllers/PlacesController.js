@@ -62,7 +62,8 @@ function create(req,res){
     if (req.files.avatar) {placeData["avatarImage"] = req.files.avatar[0].path }
     if (req.body.openHour) {placeData["openHour"] = req.body.openHour }
     if (req.body.closeHour) {placeData["closeHour"] = req.body.closeHour }
-    if (req.body._user) {placeData["_user"] = req.body._user }
+    //if (req.body._user) {placeData["_user"] = req.body._user }
+	placeData["_user"] = req.user.id
 
     Place.create(placeData).then((doc)=>{
 

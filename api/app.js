@@ -5,6 +5,8 @@ var logger = require('morgan');
 //var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 
+const jwtMiddleware = require('express-jwt')
+
 var db = require("./config/database");
 
 
@@ -28,6 +30,12 @@ app.use(bodyParser.urlencoded({ extended: false }));
 //app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
+
+app.use(jwtMiddleware({secret:'dfhwgfreufewefeiyPosteriormenteehrhg'})
+
+	.unless({path:['/sessions','/users'], method:'GET'})
+
+)
 
 app.use('/places', places);
 app.use('/users', users);
