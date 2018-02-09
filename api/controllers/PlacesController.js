@@ -12,6 +12,7 @@ function find(req,res,next){
 		.then((doc)=>{
 
 			req.place = doc
+			req.mainObj = doc
 			next()
 		})
 

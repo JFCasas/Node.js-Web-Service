@@ -7,6 +7,8 @@ let Place = require('../models/Place');
 
 let placesController = require('../controllers/PlacesController');
 
+let authenticateOwner = require('../middlewares/authenticateOwner');
+
 
 router.route('/')
 
@@ -20,9 +22,9 @@ router.route('/:slug')
 
 	.get(placesController.find,placesController.show)
 
-	.put(placesController.multerMiddleware(),placesController.update)
+	.put(placesController.find,authenticateOwner,placesController.multerMiddleware(),placesController.update)
 
-	.delete(placesController.destroy)
+	.delete(placesController.find,authenticateOwner,placesController.destroy)
 
 
 module.exports = router;
