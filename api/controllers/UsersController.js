@@ -47,8 +47,28 @@ function create(req,res,next){
 	})
 }
 
+function myPlaces(req,res){
+
+	User.findOne({'_id':req.user.id})
+
+		.then((user)=>{
+
+			user.places.then((places)=>{
+
+				res.json(places)
+			
+			})
+		
+		}).catch((err)=>{
+
+			res.json(err)
+		})
+
+}
+
 module.exports = {
 
 	index:index,
-	create:create
+	create:create,
+	myPlaces:myPlaces
 }

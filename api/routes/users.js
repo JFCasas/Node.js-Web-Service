@@ -14,7 +14,7 @@ let sessionsController = require('../controllers/SessionsController');
 
 router.route('/')
 
-	.get(usersController.index)
+	.get(usersController.myPlaces)
 
 	.post(
 		usersController.create,

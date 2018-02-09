@@ -37,6 +37,12 @@ app.use(jwtMiddleware({secret:'dfhwgfreufewefeiyPosteriormenteehrhg'})
 
 )
 
+/*app.use(jwtMiddleware({secret:'dfhwgfreufewefeiyPosteriormenteehrhg'})
+
+	.unless({path:['/sessions']})
+
+)*/
+
 app.use('/places', places);
 app.use('/users', users);
 app.use('/sessions', sessions);
