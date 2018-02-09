@@ -16,7 +16,11 @@ let placeSchema = new Schema({
 	avatarImage: String,
 	openHour: Number,
 	closeHour: Number,
-	slug: {type:String, unique:true}
+	slug: {type:String, unique:true},
+
+	_user: {type: mongoose.Schema.Types.ObjectId, ref: "User",required:true}
+
+
 	
 });
 
