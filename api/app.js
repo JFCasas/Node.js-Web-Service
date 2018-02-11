@@ -15,6 +15,7 @@ var places = require('./routes/places');
 var users = require('./routes/users');
 var sessions = require('./routes/sessions');
 var favourites = require('./routes/favourites');
+var visits = require('./routes/visits');
 
 db.connect();
 var app = express();
@@ -48,6 +49,7 @@ app.use('/places', places);
 app.use('/users', users);
 app.use('/sessions', sessions);
 app.use('/favourites', favourites);
+app.use('/visits', visits);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
