@@ -1,5 +1,7 @@
 let FavouritePlace = require('../models/FavouritePlace')
 
+let User = require('../models/User')
+
 function find(req,res,next){
 
 	FavouritePlace.findById(req.params.id)
@@ -56,11 +58,34 @@ function destroy(req,res){
 	    })
 }
 
+function myFavourites(req,res){
+
+	User.findOne({'_id':req.user.id})
+
+		.then((user)=>{
+
+			user.favourites.then((favourites)=>{
+
+				res.json(favourites)
+			
+			})
+		
+		}).catch((err)=>{
+
+			res.json(err)
+		})
+
+}
+
+
+
 module.exports = {
 
 	
 	create:create,
 	destroy:destroy,
 	find:find,
+	myFavourites:myFavourites
+
 	
 }
