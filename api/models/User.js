@@ -6,6 +6,8 @@ let Place = require('./Place');
 
 let FavouritePlace = require('./FavouritePlace');
 
+let Visit = require('./Visit');
+
 let Schema = mongoose.Schema;
 
 let userSchema = new Schema({
@@ -43,6 +45,11 @@ userSchema.virtual('favourites').get(function(){
 			return Place.find({'_id':{$in : placeIds }})
 		})
 
+})
+
+userSchema.virtual('visits').get(function(){
+
+	return Visit.find({'_user':this._id})
 })
 
 //Definimos el modelo

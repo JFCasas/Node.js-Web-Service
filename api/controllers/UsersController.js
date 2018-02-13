@@ -66,9 +66,12 @@ function myPlaces(req,res){
 
 }
 
+
+
 module.exports = {
 
 	index:index,
 	create:create,
 	myPlaces:myPlaces
+
 }

@@ -12,6 +12,8 @@ let sessionsController = require('../controllers/SessionsController');
 //let prueba = require('../middlewares/prueba')
 
 
+
+
 router.route('/')
 
 	.get(usersController.myPlaces)
@@ -20,5 +22,7 @@ router.route('/')
 		usersController.create,
 		sessionsController.generateToken,
 		sessionsController.sendToken)
+
+
 
 module.exports = router;

@@ -1,5 +1,7 @@
 let Visit = require('../models/Visit')
 
+let User = require('../models/User')
+
 
 function find(req,res,next){
 
@@ -62,10 +64,30 @@ function destroy(req,res){
 	    })
 }
 
+function myVisits(req,res){
+
+	User.findOne({'_id':req.user.id})
+
+		.then((user)=>{
+
+			user.visits.then((visits)=>{
+
+				res.json(visits)
+			
+			})
+		
+		}).catch((err)=>{
+
+			res.json(err)
+		})
+
+}
+
 module.exports = {
 
 	
 	create:create,
 	destroy:destroy,
-	find:find
+	find:find,
+	myVisits
 }

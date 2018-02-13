@@ -7,7 +7,17 @@ let visitsController = require('../controllers/VisitsController');
 
 const authenticateOwner = require('../middlewares/authenticateOwner');
 
+const jwtMiddleware = require('express-jwt')
+
 router.route('/')
+
+	.get(
+
+		jwtMiddleware({secret:'dfhwgfreufewefeiyPosteriormenteehrhg'}),
+
+		visitsController.myVisits
+
+		)
 
 	.post(visitsController.create)
 
