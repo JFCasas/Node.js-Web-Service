@@ -26,6 +26,11 @@ router.route('/:slug')
 
 	.delete(placesController.find,authenticateOwner,placesController.destroy)
 
+router.route('/:slug/visits')
+
+	.get(placesController.find,placesController.myVisits)
+
+	
 
 module.exports = router;
 

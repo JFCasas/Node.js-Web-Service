@@ -149,6 +149,25 @@ function destroy(req,res){
 	    })
 }
 
+function myVisits(req,res){
+
+	Place.findOne({'_id':req.place.id})
+
+		.then((place)=>{
+
+			place.visits.then((visits)=>{
+
+				res.json(visits)
+			
+			})
+		
+		}).catch((err)=>{
+
+			res.json(err)
+		})
+
+}
+
 function multerMiddleware(){
 
 	return upload.fields([
@@ -166,6 +185,7 @@ module.exports = {
 	update:update,
 	destroy:destroy,
 	find:find,
-	multerMiddleware:multerMiddleware
+	multerMiddleware:multerMiddleware,
+	myVisits:myVisits
 	
 }

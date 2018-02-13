@@ -4,6 +4,8 @@ const slugify = require("../plugins/slugify")
 
 let mongoosePaginate = require("mongoose-paginate")
 
+let Visit = require('./Visit');
+
 let Schema = mongoose.Schema;
 
 
@@ -32,6 +34,22 @@ placeSchema.pre('save',function(next){
 })
 
 placeSchema.plugin(mongoosePaginate)
+
+
+placeSchema.virtual('visits').get(function(){
+
+	return Visit.find({'_place':this._id}).sort('-id')
+
+	/*return Visit.find({'_place':this._id}).sort('-id')
+
+		.then((visits)=>{
+
+			return visits
+
+			
+		})*/
+
+})
 
 
 //Definimos el modelo
