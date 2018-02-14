@@ -10,15 +10,15 @@ router.route('/')
 
 	.post(applicationsController.create)
 
-/*router.route('/:id')
+router.route('/:id')
 
 	.delete(
 		
-		applicationsController.find,
-		authenticateOwner,
+		/*applicationsController.find,
+		authenticateOwner,*/
 		applicationsController.destroy
 		
-		)*/
+		)
 
 
 module.exports = router;

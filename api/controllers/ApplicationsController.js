@@ -44,7 +44,7 @@ function create(req,res){
 }
 
 
-/*function destroy(req,res){
+function destroy(req,res){
 
 	Application.findByIdAndRemove(req.params.id)
 
@@ -54,11 +54,11 @@ function create(req,res){
 			console.log(err)
 			res.json(err)
 	    })
-}*/
+}
 
 module.exports = {
 
 	create:create,
-	/*destroy:destroy,*/
+	destroy:destroy,
 	find:find	
 }
