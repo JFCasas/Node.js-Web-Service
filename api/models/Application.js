@@ -48,7 +48,7 @@ let applicationSchema = new Schema({
 
 });
 
-applicationSchema.pre('validate'function(next){
+applicationSchema.pre('validate',function(next){
 
 	assignRandomAndUniqueValueToField(this,'applicationID',()=>{
 
