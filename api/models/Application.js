@@ -1,5 +1,29 @@
 const mongoose = require("mongoose");
 
+const randomstring = require("randomstring")
+
+function assignRandomAndUniqueValueToField(app,field,next){
+
+	const randomString = randomstring.generate(20)
+
+	let searchCriteria = {}
+
+	searchCriteria[field] = randomString
+
+	Application.count(searchCriteria).then(count=>{
+
+		if( count > 0 ){
+
+			return assignRandomAndUniqueValueToField(app,field,next)
+
+		}else{
+
+			app[field] = randomString
+			next()
+		} 
+	})
+}
+
 let Schema = mongoose.Schema;
 
 let applicationSchema = new Schema({
@@ -24,7 +48,13 @@ let applicationSchema = new Schema({
 
 });
 
+applicationSchema.pre('validate'function(next){
 
+	assignRandomAndUniqueValueToField(this,'applicationID',()=>{
+
+		assignRandomAndUniqueValueToField(this,'secret',next)
+	})
+})
 
 //Definimos el modelo
 
