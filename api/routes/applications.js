@@ -6,16 +6,20 @@ let applicationsController = require('../controllers/ApplicationsController');
 
 const authenticateOwner = require('../middlewares/authenticateOwner');
 
+const authenticateAdmin = require('../middlewares/authenticateAdmin');
+
+const findUser = require('../middlewares/findUser');
+
 router.route('/')
 
-	.post(applicationsController.create)
+	.post(findUser,authenticateAdmin,applicationsController.create)
 
 router.route('/:id')
 
 	.delete(
 		
-		/*applicationsController.find,
-		authenticateOwner,*/
+		findUser,
+		authenticateAdmin,
 		applicationsController.destroy
 		
 		)
