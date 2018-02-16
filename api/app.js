@@ -21,6 +21,8 @@ var applications = require('./routes/applications');
 
 const findAppBySecret = require('./middlewares/findAppBySecret')
 
+const findAppByApplicationId = require('./middlewares/findApplicationByApplicationId')
+
 const authApp = require('./middlewares/authApp')()
 
 db.connect();
@@ -40,6 +42,8 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 
 app.use(findAppBySecret)
+
+app.use(findAppByApplicationId)
 
 app.use(authApp.unless({method:'OPTIONS'}))
 
