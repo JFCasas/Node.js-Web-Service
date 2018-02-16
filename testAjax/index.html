@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+
+	<p>Obtención de datos mediante Ajax</p>
+
+	<script>
+
+		var miInit = { 
+	               		headers: {'secret' : 'kZKAovB8PvMgUCS4jSHa'}    
+	           		 }
+			
+		fetch('http://127.0.0.1:3000/places',miInit)
+
+			
+
+			.then(places=>{
+
+				console.log(places)
+			
+			}).catch(error=>{
+
+				console.log(error)
+			})
+	
+	</script>
+	
+</body>
+</html>

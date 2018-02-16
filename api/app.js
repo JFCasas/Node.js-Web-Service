@@ -21,7 +21,7 @@ var applications = require('./routes/applications');
 
 const findAppBySecret = require('./middlewares/findAppBySecret')
 
-const authApp = require('./middlewares/authApp')
+const authApp = require('./middlewares/authApp')()
 
 db.connect();
 var app = express();
@@ -41,12 +41,12 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use(findAppBySecret)
 
-app.use(authApp)
+app.use(authApp.unless({method:'OPTIONS'}))
 
 
 app.use(jwtMiddleware({secret:'dfhwgfreufewefeiyPosteriormenteehrhg'})
 
-	.unless({path:['/sessions','/users'], method:'GET'})
+	.unless({path:['/sessions','/users'], method:['GET','OPTIONS']})
 
 )
 
