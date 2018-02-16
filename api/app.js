@@ -18,6 +18,11 @@ var favourites = require('./routes/favourites');
 var visits = require('./routes/visits');
 var applications = require('./routes/applications');
 
+
+const findAppBySecret = require('./middlewares/findAppBySecret')
+
+const authApp = require('./middlewares/authApp')
+
 db.connect();
 var app = express();
 
@@ -32,6 +37,11 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 //app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
+
+
+app.use(findAppBySecret)
+
+app.use(authApp)
 
 
 app.use(jwtMiddleware({secret:'dfhwgfreufewefeiyPosteriormenteehrhg'})
