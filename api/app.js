@@ -25,6 +25,8 @@ const findAppByApplicationId = require('./middlewares/findApplicationByApplicati
 
 const authApp = require('./middlewares/authApp')()
 
+const allowCORs = require('./middlewares/allowCORs')()
+
 db.connect();
 var app = express();
 
@@ -46,6 +48,8 @@ app.use(findAppBySecret)
 app.use(findAppByApplicationId)
 
 app.use(authApp.unless({method:'OPTIONS'}))
+
+app.use(allowCORs.unless({path:'/public'}))
 
 
 app.use(jwtMiddleware({secret:'dfhwgfreufewefeiyPosteriormenteehrhg'})

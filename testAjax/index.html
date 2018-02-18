@@ -11,7 +11,7 @@
 	<script>
 
 		var miInit = { 
-	               		headers: {'secret' : 'kZKAovB8PvMgUCS4jSHa'}    
+	               		headers: {'application' : 'Pitw0JUVDjhniP1hkh9J'}    
 	           		 }
 			
 		fetch('http://127.0.0.1:3000/places',miInit)
@@ -20,7 +20,7 @@
 
 			.then(places=>{
 
-				console.log(places)
+				places.json().then(console.log)
 			
 			}).catch(error=>{
 
