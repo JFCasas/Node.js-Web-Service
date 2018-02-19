@@ -8,13 +8,13 @@
     <script type="text/javascript">
       let formData = new FormData();
 
-      formData.append('title', 'Lugar creado con AJAX');
+      formData.append('title', 'Lugar creado con AJAX2');
       fetch('http://localhost:3000/places',{
         method: 'POST',
         body:formData,
         headers:{
-          'application': 'Pitw0JUVDjhniP1hkh9J',
-          'Authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVhODAxYzc0ZjY1Y2ZkMjk1YzIwMjMxMCIsImlhdCI6MTUxODk1MjMwMH0.9WAABdJd5GoIQmjG69yQwzxdcRTqEW_UlAF8q5HwIU4'
+          'application': '7yCpZ2NGtTTRn1JgqN1d',
+          'Authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVhN2IyYWNjYTZiYTQ4MDg1NDQ2N2U4ZCIsImlhdCI6MTUxOTAzMjMxM30.tAxj2wYVEgZNN3Xh3TaYQDblqYbNwvqoXoUcEeKUX50'
         }
       })
         .then(response=>{
