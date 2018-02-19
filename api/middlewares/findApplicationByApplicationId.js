@@ -25,6 +25,13 @@ module.exports = (req,res,next)=>{
 
 			next()
 
+			req.validRequest = req.application.origins.split(",").find(origin=>{
+        		origin = origin.replace(/\s/g,'');
+        		console.log(req.headers.origin);
+        		return origin == req.headers.origin;
+      		})
+
+
 
 		}).catch(error=>{
 

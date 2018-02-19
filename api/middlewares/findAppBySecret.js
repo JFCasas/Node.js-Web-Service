@@ -17,6 +17,8 @@ module.exports = (req,res,next)=>{
 
 			req.application = app
 
+			req.validRequest = true
+
 			next()
 
 
