@@ -30,6 +30,10 @@ placeSchema.pre('save',function(next){
 
 	this.slug = slugify(this.title)
 
+	this.coverImage = this.coverImage.split('\\')[1]
+
+	this.avatarImage = this.avatarImage.split('\\')[1]
+
 	next()
 })
 
